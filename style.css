@@ -1,0 +1,266 @@
+:root {
+  --bg: #0b1120;
+  --surface: #162033;
+  --surface-alt: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --danger: #f87171;
+  --border: #334155;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+/* Mod Butonları */
+.mode-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.mode-btn {
+  background-color: var(--surface-alt);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-btn.active {
+  background-color: var(--accent);
+  color: #0b1120;
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+/* Sayaç Ekranı */
+.timer-display {
+  text-align: center;
+  font-size: 4.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* Kontrol Butonları */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background-color: var(--accent);
+  color: #0b1120;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.btn.secondary {
+  background-color: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn.ghost {
+  background-color: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.btn.ghost:hover:not(:disabled) {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+/* Özel Süre Formu */
+.custom-form {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.custom-form label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.custom-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+input[type="number"],
+input[type="text"] {
+  flex: 1;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.error-msg {
+  color: var(--danger);
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+.stats {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.stats strong {
+  color: var(--accent);
+}
+
+/* Görev Listesi */
+.tasks-card h2 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  cursor: pointer;
+  word-break: break-word;
+}
+
+.task-item.done span {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.delete-btn:hover {
+  color: var(--danger);
+}
+
+@media (max-width: 480px) {
+  .timer-display {
+    font-size: 3.5rem;
+  }
+
+  .mode-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+  }
+}
