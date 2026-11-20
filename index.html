@@ -9,7 +9,10 @@
 <body>
   <main class="app">
     <header class="header">
-      <h1>StudySprint</h1>
+      <div class="header-top">
+        <h1>StudySprint</h1>
+        <button id="theme-toggle" class="btn ghost small-btn" type="button" aria-label="Toggle light and dark theme">Light Mode</button>
+      </div>
       <p class="tagline">Simple Pomodoro timer &amp; session task tracker</p>
     </header>
 
@@ -41,7 +44,9 @@
 
       <div class="stats">
         <span>Completed Focus Sessions: <strong id="session-count">0</strong></span>
+        <button id="reset-sessions-btn" class="link-btn" type="button">Reset count</button>
       </div>
+      <p class="shortcut-hint">Shortcuts: <kbd>Space</kbd> Start/Pause · <kbd>R</kbd> Reset</p>
     </section>
 
     <!-- Görev Listesi -->

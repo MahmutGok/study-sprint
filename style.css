@@ -3,11 +3,25 @@
   --surface: #162033;
   --surface-alt: #1e293b;
   --text: #f1f5f9;
+  --heading: #ffffff;
   --muted: #94a3b8;
   --accent: #38bdf8;
   --accent-hover: #0ea5e9;
   --danger: #f87171;
   --border: #334155;
+}
+
+body.light-theme {
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --text: #0f172a;
+  --heading: #0f172a;
+  --muted: #475569;
+  --accent: #0284c7;
+  --accent-hover: #0369a1;
+  --danger: #dc2626;
+  --border: #cbd5e1;
 }
 
 * {
@@ -37,9 +51,22 @@ body {
   text-align: center;
 }
 
+.header-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .header h1 {
   font-size: 1.8rem;
-  color: #ffffff;
+  color: var(--heading);
+}
+
+.small-btn {
+  padding: 5px 12px;
+  font-size: 0.8rem;
 }
 
 .tagline {
@@ -89,7 +116,7 @@ body {
   font-variant-numeric: tabular-nums;
   letter-spacing: 2px;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: var(--heading);
 }
 
 /* Kontrol Butonları */
@@ -184,13 +211,47 @@ input:focus {
 
 .stats {
   margin-top: 10px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   font-size: 0.9rem;
   color: var(--muted);
 }
 
 .stats strong {
   color: var(--accent);
+}
+
+.link-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  color: var(--text);
+}
+
+.shortcut-hint {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.shortcut-hint kbd {
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  color: var(--text);
 }
 
 /* Görev Listesi */

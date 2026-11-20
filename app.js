@@ -18,6 +18,8 @@ const customForm = document.getElementById("custom-form");
 const customMinutesInput = document.getElementById("custom-minutes");
 const timerError = document.getElementById("timer-error");
 const sessionCountEl = document.getElementById("session-count");
+const resetSessionsBtn = document.getElementById("reset-sessions-btn");
+const themeToggleBtn = document.getElementById("theme-toggle");
 
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
@@ -243,7 +245,57 @@ taskForm.addEventListener("submit", (e) => {
   taskInput.value = "";
 });
 
+// --- Tema Yönetimi (Theme Toggle) ---
+function applyTheme(theme) {
+  const isLight = theme === "light";
+  document.body.classList.toggle("light-theme", isLight);
+  themeToggleBtn.textContent = isLight ? "Dark Mode" : "Light Mode";
+}
+
+function loadTheme() {
+  try {
+    return localStorage.getItem("studysprint_theme") === "light" ? "light" : "dark";
+  } catch {
+    return "dark";
+  }
+}
+
+themeToggleBtn.addEventListener("click", () => {
+  const next = document.body.classList.contains("light-theme") ? "dark" : "light";
+  applyTheme(next);
+  try {
+    localStorage.setItem("studysprint_theme", next);
+  } catch {
+    // Sessizce geç
+  }
+});
+
+resetSessionsBtn.addEventListener("click", () => {
+  state.sessionsCompleted = 0;
+  saveSessions(0);
+  sessionCountEl.textContent = "0";
+});
+
+// Klavye kısayolları (Space: Başlat/Duraklat, R: Sıfırla)
+document.addEventListener("keydown", (e) => {
+  // Metin/sayı giriş alanındayken kısayolları tetikleme
+  const tag = document.activeElement?.tagName;
+  if (tag === "INPUT" || tag === "TEXTAREA") return;
+
+  if (e.code === "Space") {
+    e.preventDefault();
+    if (state.timerId !== null) {
+      pauseTimer();
+    } else {
+      startTimer();
+    }
+  } else if (e.key.toLowerCase() === "r") {
+    resetTimer();
+  }
+});
+
 // İlk açılışta ekranı çiz
+applyTheme(loadTheme());
 sessionCountEl.textContent = state.sessionsCompleted;
 updateTimerUI();
 renderTasks();
